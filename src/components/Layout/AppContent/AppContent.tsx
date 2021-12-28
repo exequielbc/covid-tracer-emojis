@@ -2,18 +2,20 @@ import { Typography } from '@mui/material';
 import { QrCodeRenderer } from '../../QrCodeRenderer';
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
-import QrCode from 'qrcode';
+import { IQrCodeService, QrCodeService } from '../../../services';
 
-const generateQrCodeUrl = async (text: string): Promise<string> => {
-  const dataUrl = await QrCode.toDataURL(text);
-  return dataUrl;
+interface AppContentProps {
+	services: {
+		qrCodeService: IQrCodeService;
+	}
 }
 
-export const AppContent = () => {
+export const AppContent = (props: AppContentProps) => {
+	const { qrCodeService } = props.services;
 	const [qrCodeUrl, setQrCodeUrl] = useState('');
   useEffect(() => {
     const setInitialCode = async () => {
-      const qrCodeUrl = await generateQrCodeUrl('Hey!');
+      const qrCodeUrl = await qrCodeService.generateQrCodeUrl('Hey!');
       setQrCodeUrl(qrCodeUrl);
     }
     setInitialCode();
