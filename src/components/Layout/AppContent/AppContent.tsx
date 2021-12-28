@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import { QrCodeRenderer } from '../../QrCodeRenderer';
 import { useEffect, useState } from 'react';
 import { Box } from '@mui/material';
-import { IQrCodeService, QrCodeService } from '../../../services';
+import { IQrCodeService } from '../../../services';
 
 interface AppContentProps {
 	services: {
@@ -15,7 +15,8 @@ export const AppContent = (props: AppContentProps) => {
 	const [qrCodeUrl, setQrCodeUrl] = useState('');
   useEffect(() => {
     const setInitialCode = async () => {
-      const qrCodeUrl = await qrCodeService.generateQrCodeUrl('Hey!');
+			const emojisToEncode = ['🎅'];
+      const qrCodeUrl = await qrCodeService.generateQrCodeForContactTracerApp(emojisToEncode);
       setQrCodeUrl(qrCodeUrl);
     }
     setInitialCode();
