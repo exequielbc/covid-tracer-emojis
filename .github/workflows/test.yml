@@ -1,7 +1,7 @@
 name: Test React app
 on: [workflow_dispatch]
 jobs:
-  check-bats-version:
+  set-up:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -9,4 +9,8 @@ jobs:
         with:
           node-version: '16'
       - run: npm install --production
+  run-tests:
+    runs-on: ubuntu-latest
+    needs: set-up
+    steps:
       - run: npm run test
