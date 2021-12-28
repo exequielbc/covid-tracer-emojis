@@ -21,9 +21,10 @@ export const EmojisSelector = (props: EmojisSelectorProps) => {
 					justifyContent: 'center',
 					flexWrap: 'wrap'
 				}}
+        data-testid="emoji-buttons-group"
 			>
         {allowedEmojis.map((emoji) => (
-          <ToggleButton value={emoji} aria-label={emoji} key={emoji}>
+          <ToggleButton value={emoji} aria-label={emoji} key={emoji} data-testid="emoji-toggle-button">
             <Typography variant="body1">{emoji}</Typography>
           </ToggleButton>
         ))}
