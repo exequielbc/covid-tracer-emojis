@@ -53,5 +53,5 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_BASE: .
-          NETLIFY_CMD: npm run build
+          NETLIFY_CMD: npm install --production && npm run build
           NETLIFY_DIR: ./build
