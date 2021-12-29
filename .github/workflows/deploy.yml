@@ -26,9 +26,10 @@ jobs:
         run: npm run test
 
   steps:
-    - uses: actions/checkout@master
+    - name: Checkout
+      uses: actions/checkout@master
 
-    - name: Publish
+    - name: Publish to Netlify
       uses: netlify/actions/build@master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
