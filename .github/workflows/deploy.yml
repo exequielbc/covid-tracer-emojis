@@ -25,15 +25,16 @@ jobs:
       - name: Run tests
         run: npm run test
 
-  steps:
-    - name: Checkout
-      uses: actions/checkout@master
+  deploy:
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
 
-    - name: Publish to Netlify
-      uses: netlify/actions/build@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-        NETLIFY_BASE: .
-        NETLIFY_CMD: npm run build
-        NETLIFY_DIR: ./build
+      - name: Publish to Netlify
+        uses: netlify/actions/build@master
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          NETLIFY_BASE: .
+          NETLIFY_CMD: npm run build
+          NETLIFY_DIR: ./build
