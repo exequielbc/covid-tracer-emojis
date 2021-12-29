@@ -47,11 +47,14 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
       - name: Install dependencies
         run: npm install --production
-      - name: Publish to Netlify
-        uses: netlify/actions/build@master
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.2
+        with:
+          publish-dir: './build'
+          production-branch: main
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Deploy from GitHub Actions"
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_PERSONAL_ACCESS_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_BASE: .
-          NETLIFY_CMD: npm install --production && npm run build
-          NETLIFY_DIR: ./build
+        timeout-minutes: 1
