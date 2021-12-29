@@ -27,6 +27,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    environment: production
     needs: test
     steps:
       - name: Checkout branch
@@ -46,8 +47,6 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
       - name: Install dependencies
         run: npm install --production
-      - name: Test can read environment variable
-        run: echo "${{ secrets.TEST_SECRET }}"
       - name: Publish to Netlify
         uses: netlify/actions/build@master
         env:
