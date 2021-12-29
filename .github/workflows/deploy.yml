@@ -47,6 +47,8 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-
       - name: Install dependencies
         run: npm install --production
+      - name: Build React app
+        run: npm run build
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2
         with:
