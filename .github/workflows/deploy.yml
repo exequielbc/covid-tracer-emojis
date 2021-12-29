@@ -46,7 +46,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ env.cache-name }}-
       - name: Install dependencies
-        run: npm install --production
+        run: npm install
       - name: Build React app
         run: npm run build
       - name: Deploy to Netlify
