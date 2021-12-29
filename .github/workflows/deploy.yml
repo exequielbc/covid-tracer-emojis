@@ -26,10 +26,26 @@ jobs:
         run: npm run test
 
   deploy:
+    runs-on: ubuntu-latest
+    needs: test
     steps:
-      - name: Checkout
+      - name: Checkout branch
         uses: actions/checkout@master
-
+      - name: Set up Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Cache node modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+      - name: Install dependencies
+        run: npm install --production
       - name: Publish to Netlify
         uses: netlify/actions/build@master
         env:
