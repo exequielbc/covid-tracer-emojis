@@ -2,19 +2,15 @@ import { Button, Typography } from '@mui/material';
 import { QrCodeRenderer } from '../../QrCodeRenderer';
 import { useState } from 'react';
 import { Box } from '@mui/material';
-import { IQrCodeService } from '../../../services';
 import { EmojisSelector } from '../../EmojisSelector';
+import { useQrCodeService } from '../../../contexts';
 
-interface AppContentProps {
-	services: {
-		qrCodeService: IQrCodeService;
-	}
-}
-
-export const AppContent = (props: AppContentProps) => {
-	const { qrCodeService } = props.services;
+export const AppContent = () => {
+	const qrCodeService = useQrCodeService();
 	const [ selectedEmojis, setSelectedEmojis ] = useState<string[]>([]);
 	const [ qrCodeUrl, setQrCodeUrl ] = useState('');
+
+
 	const setCode = async (emojisToEncode: string[]) => {
 		const qrCodeUrl = await qrCodeService.generateQrCodeForContactTracerApp(emojisToEncode);
 		setQrCodeUrl(qrCodeUrl);
