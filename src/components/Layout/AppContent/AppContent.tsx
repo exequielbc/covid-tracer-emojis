@@ -17,7 +17,13 @@ export const AppContent = () => {
 	}
 
 	return (
-		<Box display='flex' flexDirection='column' justifyContent='flex-start' alignItems='center'>
+		<Box sx={{
+			display: 'flex',
+			flexDirection: 'column',
+			justifyContent: 'center',
+			alignItems: 'center',
+			py: '16px'
+		}}>
 			<Typography variant='h1'>NZ Covid Tracer Emojis</Typography>
 			<EmojisSelector
 				selectedEmojis={selectedEmojis}
