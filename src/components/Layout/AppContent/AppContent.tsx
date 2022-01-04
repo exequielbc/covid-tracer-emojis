@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Box } from '@mui/material';
 import { EmojisSelector } from '../../EmojisSelector';
 import { useQrCodeService } from '../../../contexts';
+import { AutoFixHigh } from '@mui/icons-material';
 
 export const AppContent = () => {
 	const qrCodeService = useQrCodeService();
@@ -30,7 +31,8 @@ export const AppContent = () => {
 				onSelectedEmojisUpdate={(newEmojis: string[]) => setSelectedEmojis(newEmojis)}
 			/>
 			<Button
-				variant='contained'
+				variant='outlined'
+				endIcon={<AutoFixHigh />}
 				onClick={() => setCode(selectedEmojis)}
 			>
 				Generate QR code

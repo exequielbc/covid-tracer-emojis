@@ -1,3 +1,4 @@
+import { Casino, Clear } from '@mui/icons-material';
 import { Box, Button, ButtonGroup, Typography } from '@mui/material';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
@@ -37,10 +38,16 @@ export const EmojisSelector = (props: EmojisSelectorProps) => {
         ))}
       </ToggleButtonGroup>
       <ButtonGroup variant="contained" aria-label="bulk selection buttons">
-        <Button onClick={() => onSelectedEmojisUpdate([])}>
+        <Button
+          startIcon={<Clear />}
+          onClick={() => onSelectedEmojisUpdate([])}
+        >
           Clear selected emojis
         </Button>
-        <Button onClick={() => onSelectedEmojisUpdate(pickRandomEmojis(5))}>
+        <Button
+          startIcon={<Casino />}
+          onClick={() => onSelectedEmojisUpdate(pickRandomEmojis(5))}
+        >
           Pick random 5
         </Button>
       </ButtonGroup>
