@@ -1,5 +1,5 @@
 # covid-tracer-emojis
-Generate QR codes that display emojis in the NZ Covid Tracer app.
+Generate QR codes that display emojis in the NZ Covid Tracer app. Try it [here](http://nz-covid-tracer-emojis.netlify.app)!
 
 > This repo was generated using [Create React App](https://create-react-app.dev)
 
